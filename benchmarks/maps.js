@@ -6,5 +6,8 @@ for (let i = 0; i < 100000; i++) {
 }
 
 for (const map of maps) {
+  const start = Date.now().toPrecision(21);
   map.size;
+  const elapsed = Date.now().toPrecision(21) - start;
+  print(elapsed)
 }
