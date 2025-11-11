@@ -11,11 +11,15 @@ fn main() {
     }
 
     // Check if nova directory exists, if not clone it
-    if !std::path::Path::new(NOVA_DIR).exists() {
+    if !std::path::Path::new("nova").exists() {
         std::process::Command::new("git")
-            .args(&["clone", NOVA_REPO_URL, NOVA_DIR])
+            .args(&["clone", NOVA_REPO_URL])
             .status()
             .expect("Failed to clone Nova repository");
+    }
+
+    if !std::path::Path::new(NOVA_DIR).exists() {
+        std::fs::create_dir(NOVA_DIR).expect("Failed to create nova dir");
     }
 
     let mut artifact_paths = Vec::new();
