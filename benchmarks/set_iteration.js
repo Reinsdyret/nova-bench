@@ -2,7 +2,7 @@
 // This tests SoAVec's benefit: when SetHeapData is in SoAVec, the values Vec pointers
 // are stored contiguously, improving cache locality when iterating across many Sets.
 
-const NUM_SETS = 5000;  // Many sets to stress cache
+const NUM_SETS = 50;  // Many sets to stress cache
 const ENTRIES_PER_SET = 100;  // Small sets so we iterate through many of them
 const ITERATIONS = 10;
 const RUNS = 5;
@@ -13,7 +13,7 @@ function runBenchmark() {
     for (let i = 0; i < NUM_SETS; i++) {
         const s = new Set();
         for (let j = 0; j < ENTRIES_PER_SET; j++) {
-            s.add("A".repeat(10000)); // 10KB string
+            s.add("A".repeat(1000000)); // 1KB string
         }
         sets.push(s);
     }
